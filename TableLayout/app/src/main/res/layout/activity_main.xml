@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:stretchColumns="1">
+
+    <!-- Time Row -->
+    <TableRow>
+        <TextView
+            android:text="Time"
+            android:textSize="16sp" />
+
+        <TextView
+            android:text="11:37 PM"
+            android:textSize="16sp"
+            android:paddingStart="10dp"/>
+    </TableRow>
+
+    <!-- First Name -->
+    <TableRow>
+        <TextView
+            android:text="First Name"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:hint="Enter First Name"/>
+    </TableRow>
+
+    <!-- Last Name -->
+    <TableRow>
+        <TextView
+            android:text="Last Name"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:hint="Enter Last Name"/>
+    </TableRow>
+
+    <!-- Rating Bar -->
+    <TableRow
+        android:layout_marginTop="20dp"
+        android:layout_span="2"
+        android:gravity="center">
+
+        <RatingBar
+            android:numStars="5"
+            android:stepSize="1.0"/>
+    </TableRow>
+
+    <!-- Submit Button -->
+    <TableRow
+        android:layout_marginTop="20dp"
+        android:layout_span="2"
+        android:gravity="center">
+
+        <Button
+            android:text="SUBMIT"
+            android:padding="10dp"/>
+    </TableRow>
+
+</TableLayout>
