@@ -9,6 +9,7 @@ import android.widget.PopupMenu;
 
 public class MainActivity extends AppCompatActivity {
 
+
     Spinner spinner;
     Button btnAlert, btnPopup, btnToast;
 

@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.buttonSubmit);
         spinner = findViewById(R.id.spinnerCountry);
 
-        // Spinner Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -38,22 +37,22 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        // Button Click
         button.setOnClickListener(v -> {
 
             String name = editText.getText().toString();
 
             int selectedId = radioGroup.getCheckedRadioButtonId();
+
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select gender", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             selectedRadio = findViewById(selectedId);
 
-            String gender = (selectedRadio != null)
-                    ? selectedRadio.getText().toString()
-                    : "Not Selected";
-
+            String gender = selectedRadio.getText().toString();
             String agree = checkBox.isChecked() ? "Agreed" : "Not Agreed";
-
             String toggleState = toggleButton.isChecked() ? "ON" : "OFF";
-
             String country = spinner.getSelectedItem().toString();
 
             String message = "Name: " + name +
@@ -65,21 +64,18 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
         });
 
-        // Toggle Event
-        toggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Toast.makeText(MainActivity.this,
-                    isChecked ? "Toggle ON" : "Toggle OFF",
-                    Toast.LENGTH_SHORT).show();
-        });
+        toggleButton.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Toast.makeText(this,
+                        isChecked ? "Toggle ON" : "Toggle OFF",
+                        Toast.LENGTH_SHORT).show()
+        );
 
-        // CheckBox Event
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Toast.makeText(MainActivity.this,
-                    isChecked ? "Checked" : "Unchecked",
-                    Toast.LENGTH_SHORT).show();
-        });
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Toast.makeText(this,
+                        isChecked ? "Checked" : "Unchecked",
+                        Toast.LENGTH_SHORT).show()
+        );
 
-        // Spinner Event
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
